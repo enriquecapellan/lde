@@ -1,0 +1,63 @@
+package ide;
+
+import java_cup.runtime.Symbol;
+
+parser code
+{:
+    private Symbol s;
+    
+    public void syntax_error(Symbol s){
+        this.s = s;
+    }
+
+    public Symbol getS(){
+        return this.s;
+}
+:};
+
+terminal Linea, Comillas, T_dato, Int, Cadena, If,
+    Igual, Suma, Resta, Multiplicacion, Division, Op_logico, Op_relacional,
+    Op_atribucion, Op_booleano, Parentesis_a, Parentesis_c,
+    Llave_a, Llave_c, P_coma, Identificador, Numero, ERROR, Clase;
+non terminal SENTENCIA, DECLARACION, IF, SENTENCIA_BOOLEANA, INICIO, FUNCION;
+
+start with INICIO;
+
+INICIO ::= 
+    Clase Identificador Llave_a SENTENCIA Llave_c |
+    Clase Identificador Llave_a Llave_c 
+;
+FUNCION ::=
+    Int Identificador Parentesis_a Parentesis_c  Llave_a SENTENCIA Llave_c |
+    Int Identificador Parentesis_a Parentesis_c Llave_a Llave_c
+;
+SENTENCIA ::= 
+    SENTENCIA DECLARACION |
+    DECLARACION |
+    SENTENCIA IF | 
+    IF |
+    SENTENCIA FUNCION |
+    FUNCION
+;
+DECLARACION ::= 
+    Int Identificador P_coma | 
+    Int Identificador Op_atribucion Numero P_coma |
+    Int Identificador Igual Numero P_coma |
+    T_dato Identificador P_coma | 
+    T_dato Identificador Op_atribucion Numero P_coma |
+    T_dato Identificador Igual Numero P_coma |
+    Cadena Identificador Op_atribucion Comillas Comillas P_coma |
+    Cadena Identificador Igual Comillas Comillas P_coma |
+    Cadena Identificador Op_atribucion Comillas Identificador Comillas P_coma |
+    Cadena Identificador Igual Comillas Identificador Comillas P_coma
+;
+IF ::= If Parentesis_a SENTENCIA_BOOLEANA Parentesis_c Llave_a SENTENCIA Llave_c
+;
+SENTENCIA_BOOLEANA ::= 
+    Op_booleano | 
+    Identificador Op_relacional Op_booleano |
+    Identificador Op_relacional Numero |
+    Identificador Op_relacional Identificador |
+    Identificador Op_relacional Comillas Comillas |
+    Identificador Op_relacional Comillas Identificador Comillas
+;
