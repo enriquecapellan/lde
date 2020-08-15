@@ -3,6 +3,7 @@ import java_cup.runtime.Symbol;
 %%
 %class LexerCup
 %type java_cup.runtime.Symbol
+%public
 %cup
 %full
 %line
@@ -26,14 +27,8 @@ espacio=[ ,\t,\r,\n]+
 /* Comentarios */
 ( "//"(.)* ) {/*Ignore*/}
 
-/* Comillas */
-( "\"" ) {return new Symbol(sym.Comillas, yychar, yyline, yytext());}
-
-/* Tipo de dato Int (Para el main) */
+/* Tipo de dato Int */
 ( "int" ) {return new Symbol(sym.Int, yychar, yyline, yytext());}
-
-/* Palabra reservada If */
-( if ) {return new Symbol(sym.If, yychar, yyline, yytext());}
 
 /* Operador Igual */
 ( "=" ) {return new Symbol(sym.Igual, yychar, yyline, yytext());}
@@ -50,11 +45,20 @@ espacio=[ ,\t,\r,\n]+
 /* Operador Division */
 ( "/" ) {return new Symbol(sym.Division, yychar, yyline, yytext());}
 
-/*Operadores Relacionales */
-( ">" | "<" | "==" | "!=" | ">=" | "<=" | "<<" | ">>" ) {return new Symbol(sym.Op_relacional, yychar, yyline, yytext());}
+/* Operador Potencia */
+( "^" ) {return new Symbol(sym.Potencia, yychar, yyline, yytext());}
 
-/* Operadores Atribucion */
-( "=" ) {return new Symbol(sym.Op_atribucion, yychar, yyline, yytext());}
+/*Operadores Relacionales */
+( ">" | "<" | "==" | "!=" | ">=" | "<=" ) {return new Symbol(sym.Op_relacional, yychar, yyline, yytext());}
+
+/* Flecha */
+( "retorna" ) {return new Symbol(sym.Retorna, yychar, yyline, yytext());}
+
+/* Flecha */
+( "->" ) {return new Symbol(sym.Flecha, yychar, yyline, yytext());}
+
+/* Imprimir */
+( "imprimir" ) {return new Symbol(sym.Imprimir, yychar, yyline, yytext());}
 
 /*Operadores Booleanos*/
 ( true | false ) {return new Symbol(sym.Op_booleano, yychar, yyline, yytext());}
@@ -78,7 +82,7 @@ espacio=[ ,\t,\r,\n]+
 ( ";" ) {return new Symbol(sym.P_coma, yychar, yyline, yytext());}
 
 /* Identificador */
-{L} {return new Symbol(sym.Identificador, yychar, yyline, yytext());}
+{L}({L}|{D})* {return new Symbol(sym.Identificador, yychar, yyline, yytext());}
 
 /* Numero */
 ("(-"{D}+")")|{D}+ {return new Symbol(sym.Numero, yychar, yyline, yytext());}

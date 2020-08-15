@@ -100,7 +100,8 @@ public class Editor extends javax.swing.JFrame {
             output.setForeground(new Color(25, 111, 61));
         } catch (Exception ex) {
             Symbol sym = s.getS();
-            output.setText("Error de sintaxis. Linea: " + (sym.right + 1) + " Columna: " + (sym.left + 1) + ", Texto: \"" + sym.value + "\"");
+            output.setText((String) sym.value);
+            //output.setText("Error de sintaxis. Linea: " + (sym.right + 1) + " Columna: " + (sym.left + 1) + ", Texto: \"" + sym.value + "\"");
             output.setForeground(Color.red);
         }
     }//GEN-LAST:event_runBtnActionPerformed

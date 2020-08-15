@@ -17,12 +17,11 @@ espacio=[ ,\t,\r]+
 /* Comentarios */
 ( "//"(.)* ) {/*Ignore*/}
 
+/* Salto de linea */
+( "\n" ) {return Linea;}
+
 /* Comillas */
 ( "\"" ) {lexeme=yytext(); return Comillas;}
-
-/* Tipos de datos */
-( int ) {lexeme=yytext(); return T_dato;}
-
 
 /* Palabra reservada If */
 ( if ) {lexeme=yytext(); return If;}
@@ -42,11 +41,29 @@ espacio=[ ,\t,\r]+
 /* Operador Division */
 ( "/" ) {lexeme=yytext(); return Division;}
 
+/* Operador Potencia */
+( "^" ) {lexeme=yytext(); return Potencia;}
+
 /* Operadores logicos */
 ( "&&" | "||" | "!" | "&" | "|" ) {lexeme=yytext(); return Op_logico;}
 
 /*Operadores Relacionales */
 ( ">" | "<" | "==" | "!=" | ">=" | "<=" | "<<" | ">>" ) {lexeme = yytext(); return Op_relacional;}
+
+/* Operadores Atribucion */
+( "+=" | "-="  | "*=" | "/=" | "%=" ) {lexeme = yytext(); return Op_atribucion;}
+
+/* Operadores Incremento y decremento */
+( "++" | "--" ) {lexeme = yytext(); return Op_incremento;}
+
+/* Retorna */
+( "retorna" ) {lexeme = yytext(); return Retorna;}
+
+/* Flecha */
+( "->" ) {lexeme = yytext(); return Flecha;}
+
+/* Imprimir */
+( "imprimir" ) {lexeme = yytext(); return Imprimir;}
 
 /*Operadores Booleanos*/
 (true | false)      {lexeme = yytext(); return Op_booleano;}
@@ -64,13 +81,13 @@ espacio=[ ,\t,\r]+
 ( "}" ) {lexeme=yytext(); return Llave_c;}
 
 /* Marcador de inicio de algoritmo */
-( "clase" ) {lexeme=yytext(); return Clase;}
+( "clase" ) {lexeme = yytext(); return Clase;}
 
 /* Punto y coma */
 ( ";" ) {lexeme=yytext(); return P_coma;}
 
 /* Identificador */
-{L} {lexeme=yytext(); return Identificador;}
+{L}({L}|{D})* {lexeme=yytext(); return Identificador;}
 
 /* Numero */
 ("(-"{D}+")")|{D}+ {lexeme=yytext(); return Numero;}

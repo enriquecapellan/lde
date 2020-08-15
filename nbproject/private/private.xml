@@ -3,14 +3,15 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/D:/Unibe/6t0%20Cuatrimestre/Teoria%20de%20compiladores/IDE/src/ide/IDE.java</file>
-            <file>file:/D:/Unibe/6t0%20Cuatrimestre/Teoria%20de%20compiladores/IDE/src/ide/Sintax.cup</file>
-            <file>file:/D:/Unibe/6t0%20Cuatrimestre/Teoria%20de%20compiladores/IDE/src/ide/Editor.java</file>
-            <file>file:/D:/Unibe/6t0%20Cuatrimestre/Teoria%20de%20compiladores/IDE/src/ide/LexerCup.java</file>
-            <file>file:/D:/Unibe/6t0%20Cuatrimestre/Teoria%20de%20compiladores/IDE/src/ide/Lexer.flex</file>
-            <file>file:/D:/Unibe/6t0%20Cuatrimestre/Teoria%20de%20compiladores/IDE/src/ide/Tokens.java</file>
-            <file>file:/D:/Unibe/6t0%20Cuatrimestre/Teoria%20de%20compiladores/IDE/src/ide/sym.java</file>
             <file>file:/D:/Unibe/6t0%20Cuatrimestre/Teoria%20de%20compiladores/IDE/src/ide/LexerCup.flex</file>
+            <file>file:/D:/Unibe/6t0%20Cuatrimestre/Teoria%20de%20compiladores/IDE/src/ide/sym.java</file>
+            <file>file:/D:/Unibe/6t0%20Cuatrimestre/Teoria%20de%20compiladores/IDE/src/ide/Sintax.cup</file>
+            <file>file:/D:/Unibe/6t0%20Cuatrimestre/Teoria%20de%20compiladores/IDE/src/ide/Tokens.java</file>
+            <file>file:/D:/Unibe/6t0%20Cuatrimestre/Teoria%20de%20compiladores/IDE/src/ide/Sintax.java</file>
+            <file>file:/D:/Unibe/6t0%20Cuatrimestre/Teoria%20de%20compiladores/IDE/src/ide/LexerCup.java</file>
+            <file>file:/D:/Unibe/6t0%20Cuatrimestre/Teoria%20de%20compiladores/IDE/src/ide/IDE.java</file>
+            <file>file:/D:/Unibe/6t0%20Cuatrimestre/Teoria%20de%20compiladores/IDE/src/ide/Lexer.flex</file>
+            <file>file:/D:/Unibe/6t0%20Cuatrimestre/Teoria%20de%20compiladores/IDE/src/ide/Editor.java</file>
             <file>file:/D:/Unibe/6t0%20Cuatrimestre/Teoria%20de%20compiladores/IDE/src/ide/Lexer.java</file>
         </group>
     </open-files>
